@@ -3,7 +3,7 @@ ___
 ## **Berikut Langkah-langkah membuat CRUD dengan Java Swing untuk entitas MataKuliah dengan atribut: KodeMK, SKS, NamaMK, SemesterAjar.**
 **1. Buat project baru** dengan nama UTS_PBO pada Netbeans namun unchecklist pada Create Main Class kemudian klik Finish.
 
-**2. Klik kanan pada default package kemudian pilih New, klik JFrame Form lalu beri nama FrameBuku.**
+**2. Klik kanan pada default package kemudian pilih New, klik JFrame Form lalu beri nama FrameMataKuliah.**
 
 **3. Buat Kelas DbUtils** dengan cara klik kanan pada default package kemudian pilih New, klik Java Class. Kelas DbUtils ini berfungsi mengonversi objek ResultSet dari database menjadi TableModel agar dapat ditampilkan pada JTable di GUI java Swing. Dengan demikian, kita dapat meneruskan data menggunakan object ResultSet ke Jtable tanpa menulis kodenya secara manual.
 
