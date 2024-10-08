@@ -46,7 +46,7 @@ public class DbUtils {
 
 ```
 
-**4. Membuat Database berisi tabel MataKuliah** pada PostgreSQL dengan rincian sebagai berikut. KodeMK dengan tipe data INT dan set sebagai primary key, SKS dengan tipe data INT, NamaMK dengan tipe data Varchar(50), serta SMT dengan tipe data INT.
+**4. Membuat Database berisi tabel MataKuliah** pada PostgreSQL dengan rincian sebagai berikut. KodeMK dengan tipe data Varchar dan set sebagai primary key, SKS dengan tipe data INT, NamaMK dengan tipe data Varchar, serta SemesterAjar dengan tipe data INT.
 
 
 ![Screenshot 2024-10-08 125528](https://github.com/user-attachments/assets/2cb59364-0d5d-4b34-89e5-aaba6fc24731)
@@ -55,14 +55,13 @@ public class DbUtils {
 **5. Pada Project UTS_PBO di Netbeans bagian Libraries klik kanan pilih Add Library.** Setelah muncul pop up, pilih PostgreSQL JDBC Driver untuk menyambungkan database pada PostgreSQL dengan project UTS_PBO.
 
 
-
 ![Screenshot 2024-10-08 130210](https://github.com/user-attachments/assets/e4a3a42c-80b9-45bf-bd49-7e66356137c9)
 
 ![Screenshot 2024-10-08 130232](https://github.com/user-attachments/assets/2b9786c8-26b2-4846-b0ca-1fa8593a1110)
 
 ![Screenshot 2024-10-08 134620](https://github.com/user-attachments/assets/285090aa-e3a3-404a-b69e-60483f1d3940)
 
-**6. Mulai membuat desain tampilan GUI Java Swing pada FrameMataKuliah.** Menggunakan JLable pada judul tampilan “DATA MATA KULIAH”, Kode MK, SKS, Nama MK, Semester Aja. Menggunakan JTextField untuk mengisi atau menginput dataKode MK, SKS, Nama MK, Semester Ajar. Menggunakan JButton pada tombol Insert, Update, Delete, Clear, dan Exit. Menggunakan JTable untuk menampilkan Table Data Mata Kuliah yang berisi 4 kolom yakni Kode MK, SKS, Nama MK, Semester Ajar.
+**6. Mulai membuat desain tampilan GUI Java Swing pada FrameMataKuliah.** Menggunakan JLable pada judul tampilan “DATA MATA KULIAH”, Kode MK, SKS, Nama MK, Semester Ajar. Menggunakan JTextField untuk mengisi atau menginput dataKode MK, SKS, Nama MK, Semester Ajar. Menggunakan JButton pada tombol Insert, Update, Delete, Clear, dan Exit. Menggunakan JTable untuk menampilkan Table Data Mata Kuliah yang berisi 4 kolom yakni Kode MK, SKS, Nama MK, Semester Ajar.
 
 ![Screenshot 2024-10-08 132228](https://github.com/user-attachments/assets/fe039158-9666-4cd8-90f3-25aaa42c990a)
 
@@ -254,40 +253,6 @@ d.) Mengisi program btnUpdateActionPerformed. btnUpdate berfungsi untuk mengupda
 
     }                                         
 
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        String id = tfKode.getText();
-
-        if (id.isEmpty()) {
-            
-            JOptionPane.showMessageDialog(null, "Kode MK diisi dulu yaa!", "Input Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        int confirm = JOptionPane.showConfirmDialog(null, "Yakin ingin menghapus data dengan Kode MK: " + id + "?",
-                "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
-
-        if (confirm == JOptionPane.YES_OPTION) {
-            try {
-                
-                String query = "DELETE FROM MataKuliah WHERE KodeMK = ?";
-                pst = conn.prepareStatement(query);
-                pst.setString(1, id);
-
-               
-                int deleted = pst.executeUpdate();
-               
-                tampil();
-                String message = (deleted > 0) ? "Data berhasil dihapus!" : "Kode MK tidak ditemukan!";
-                JOptionPane.showMessageDialog(null, message);
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + e.getMessage(), "Error",
-                        JOptionPane.ERROR_MESSAGE);
-                e.printStackTrace();
-            }
-        }
-    }                                         
-
-
 ```
 e.) Mengisi program btnDeleteActionPerformed. btnDelete berfungsi untuk menghapus data dalam tabel database. Berisi perintah sql “DELETE FROM MataKuliah WHERE KodeMK= ?”
 ```
@@ -384,7 +349,7 @@ private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {
 **11. Hasil Eksekusi Clear Data**
 
 - Sebelum Clear data
-- 
+  
 ![Screenshot 2024-10-08 133154](https://github.com/user-attachments/assets/69fb4635-0497-4b6a-aec6-f9fbf0c8ae88)
 
 - Setelah klik btnClear
